@@ -19,11 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d("onCreate","état durant lequel l'activity est créée");
 
-
-
-
-
-
     }
 
     @Override
