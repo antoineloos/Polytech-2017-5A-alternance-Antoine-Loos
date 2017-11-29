@@ -3,9 +3,12 @@ package com.polytech.epulapp.tpandroidpolytech;
 import android.app.ActionBar;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +20,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener , SecondaryFragment.SecondaryFragmentListener {
 
     public Menu currentMenu;
+    public MyBroadcastR receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         ft.commit();
         }
 
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("my-event");
+
+        receiver = new MyBroadcastR()
+        {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                super.onReceive(context, intent);
+            }
+        };
+        registerReceiver(receiver,filter);
     }
 
     @Override
@@ -105,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     @Override
     protected void onResume() {
         super.onResume();
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("my-event"));
         Log.d("onResume","état durant lequel l'application est reprise depuis l'état de pause");
     }
 

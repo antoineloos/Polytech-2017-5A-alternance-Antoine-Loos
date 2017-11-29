@@ -2,6 +2,7 @@ package com.polytech.epulapp.tpandroidpolytech;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -111,6 +112,13 @@ public class SecondaryFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Intent intent = new Intent();
+        intent.setAction("my-event");
+        getActivity().sendBroadcast(intent);
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
