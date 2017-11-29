@@ -7,4 +7,17 @@
     <string name="unvsun">1 VS 1</string>
     <string name="online">Online</string>
     <string name="unvsvunol">1 VS 1 Online</string>
+    <string name="equipe">Equipe : B</string>
+    <string name="vies">Vies : 3</string>
+    <string name="joueur">Joueur : Lucie</string>
+    <string name="score">Score : 18</string>
+    <string name="animal">De quel animal est-ce le cri ? </string>
+    <string name="valeur">valeur : 5 pts</string>
+    <string name="chien">Chien</string>
+    <string name="chat">Chat</string>
+    <string name="cheval">Cheval</string>
+    <string name="vache">Vache</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
