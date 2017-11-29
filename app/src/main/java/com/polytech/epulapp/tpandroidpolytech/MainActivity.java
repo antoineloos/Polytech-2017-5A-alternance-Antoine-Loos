@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener , SecondaryFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener , SecondaryFragment.SecondaryFragmentListener {
 
     public Menu currentMenu;
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
     public void switchBetweenFragment()
     {
-    
+
 
         MainFragment myFragment = (MainFragment)getFragmentManager().findFragmentByTag("view1");
         if (myFragment != null && myFragment.isVisible()) {
@@ -120,8 +120,26 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         Log.d("onDestroy","evenement appelé avant que l'appli soit détruite");
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
+    @Override
+    public void onView2BtnClicked() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        SecondaryFragment sf = new SecondaryFragment();
+
+        ft.replace(R.id.mainFrame, sf , "view2");
+        ft.addToBackStack("view2");
+        ft.commit();
+        currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_back));
+    }
+
+    @Override
+    public void onBackBtnClicked() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        MainFragment sf = new MainFragment();
+
+        ft.replace(R.id.mainFrame, sf , "view1");
+        ft.addToBackStack("view1");
+        ft.commit();
+        currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_settings));
     }
 }

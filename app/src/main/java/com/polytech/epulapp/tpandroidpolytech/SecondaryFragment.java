@@ -1,5 +1,6 @@
 package com.polytech.epulapp.tpandroidpolytech;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -18,6 +20,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class SecondaryFragment extends Fragment {
+
+    SecondaryFragmentListener mCallback;
+
+    // Container Activity must implement this interface
+    public interface SecondaryFragmentListener {
+        public void onBackBtnClicked();
+    }
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,7 +73,15 @@ public class SecondaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_secondary, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_secondary, container, false);
+        Button btn  = rootView.findViewById(R.id.backbtn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mCallback.onBackBtnClicked();
+            }
+        });
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,13 +92,16 @@ public class SecondaryFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (SecondaryFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
         }
     }
 
