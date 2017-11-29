@@ -1,0 +1,162 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.polytech.epulapp.tpandroidpolytech.SecondaryFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/secFrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_marginHorizontal="@dimen/margin_linear"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+
+                    android:textSize="@dimen/textblock_size2"
+                    android:layout_height="@dimen/text_height"
+                    android:gravity="left|center"
+                    android:layout_weight="1"
+                    android:text="@string/equipe" />
+
+                <TextView
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_height"
+                    android:gravity="right|center"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/textblock_size2"
+                    android:text="@string/vies" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:textSize="@dimen/textblock_size2"
+
+                    android:layout_height="@dimen/text_height"
+                    android:gravity="left|center"
+                    android:layout_weight="1"
+                    android:text="@string/joueur" />
+
+                <TextView
+                    android:id="@+id/unvsunBtn"
+                    android:textSize="@dimen/textblock_size2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_height"
+                    android:gravity="right|center"
+                    android:layout_weight="1"
+
+                    android:text="@string/score" />
+            </LinearLayout>
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/top_space_height" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/animal"
+                android:textAlignment="center"
+                android:textSize="@dimen/textblock_size"
+                />
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/top_space_height" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_height"
+                android:text="@string/valeur"
+                android:textAlignment="center"
+                android:textSize="@dimen/textblock_size2"
+                />
+            <ProgressBar
+                android:layout_width="match_parent"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progress="75"
+                android:layout_margin="@dimen/btn_margin"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_margin="@dimen/btn_margin"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:background="@color/btn2"
+                    android:layout_margin="@dimen/btn_margin"
+                    android:textColor="@color/txtbtn2"
+                    android:text="@string/chien" />
+
+                <Button
+
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:background="@color/btn2"
+                    android:layout_margin="@dimen/btn_margin"
+                    android:textColor="@color/txtbtn2"
+                    android:text="@string/chat" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+
+                android:layout_margin="@dimen/btn_margin"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:background="@color/btn2"
+                    android:layout_margin="@dimen/btn_margin"
+                    android:textColor="@color/txtbtn2"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:text="@string/cheval" />
+
+                <Button
+
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:background="@color/btn2"
+                    android:layout_margin="@dimen/btn_margin"
+                    android:textColor="@color/txtbtn2"
+                    android:text="@string/vache" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
