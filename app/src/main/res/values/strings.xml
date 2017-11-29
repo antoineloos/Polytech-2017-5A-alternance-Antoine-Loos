@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TPAndroidPolytech</string>
-    <string name="action_settings">view2</string>
-    <string name="action_back">GoBack</string>
+    <string name="action_settings">View2</string>
+    <string name="action_back">Back</string>
     <string name="offline">Offline</string>
     <string name="unvsia">1 VS IA</string>
     <string name="unvsun">1 VS 1</string>

@@ -16,6 +16,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener , SecondaryFragment.OnFragmentInteractionListener {
 
+    public Menu currentMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //ajoute les entrées de menu_test à l'ActionBar
+        currentMenu = menu;
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -53,9 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
     public void switchBetweenFragment()
     {
-        /*if(getFragmentManager().findFragmentById(R.id.mainFrag).isVisible()){*/
-        /*if( getFragmentManager().getBackStackEntryCount() == 1)
-        {*/
+    
 
         MainFragment myFragment = (MainFragment)getFragmentManager().findFragmentByTag("view1");
         if (myFragment != null && myFragment.isVisible()) {
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
             ft.replace(R.id.mainFrame, sf , "view2");
             ft.addToBackStack("view2");
             ft.commit();
+            currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_back));
         }
         else
             {
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
                     ft.replace(R.id.mainFrame, sf , "view1");
                     ft.addToBackStack("view1");
                     ft.commit();
+                    currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_settings));
                 }
             }
 
