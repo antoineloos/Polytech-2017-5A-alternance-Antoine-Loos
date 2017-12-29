@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="top_space_height">40dp</dimen>
+    <dimen name="space_height">100dp</dimen>
+    <dimen name="button_height">80dp</dimen>
+    <dimen name="textblock_size">30dp</dimen>
+    <dimen name="text_height">40dp</dimen>
+    <dimen name="margin_linear">10dp</dimen>
+    <dimen name="textblock_size2">20dp</dimen>
+    <dimen name="btn_margin">5dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+</resources>
