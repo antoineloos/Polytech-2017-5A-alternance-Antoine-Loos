@@ -8,4 +8,5 @@
     <dimen name="margin_linear">10dp</dimen>
     <dimen name="textblock_size2">20dp</dimen>
     <dimen name="btn_margin">5dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
