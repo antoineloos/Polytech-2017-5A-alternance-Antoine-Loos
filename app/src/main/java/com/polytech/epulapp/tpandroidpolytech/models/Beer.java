@@ -29,11 +29,11 @@ public class Beer {
         this.image_url=url;
     }
 
-    public void setImgBiere(Bitmap img){
+    public void setBeerThumbnail(Bitmap img){
         this.thumbnail = img;
     }
 
-    public Bitmap getImgBiere(){
+    public Bitmap getBeerThumbnail(){
         return this.thumbnail;
     }
 }
