@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         Log.d("onCreate","état durant lequel l'activity est créée");
         if(savedInstanceState == null){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        MainFragment mf = new MainFragment();
-
-        ft.replace(R.id.mainFrame, mf,"view1");
+       // MainFragment mf = new MainFragment();
+        BeerFragment bf = new BeerFragment();
+        ft.replace(R.id.mainFrame, bf,"view1");
         ft.commit();
         }
 
