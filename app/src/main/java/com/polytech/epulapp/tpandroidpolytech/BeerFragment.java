@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.polytech.epulapp.tpandroidpolytech.contents.BeerListContent;
 import com.polytech.epulapp.tpandroidpolytech.models.Beer;
 import com.polytech.epulapp.tpandroidpolytech.services.APICallback;
 import com.polytech.epulapp.tpandroidpolytech.services.BeerAccessService;
+import com.polytech.epulapp.tpandroidpolytech.utils.ClickListener;
+import com.polytech.epulapp.tpandroidpolytech.utils.IBeerClick;
+import com.polytech.epulapp.tpandroidpolytech.utils.RecyclerTouchListener;
 
 import java.util.List;
 
@@ -24,8 +26,9 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class BeerFragment extends Fragment {
+public class BeerFragment extends Fragment  {
 
+    private IBeerClick clickListener;
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
@@ -77,21 +80,23 @@ public class BeerFragment extends Fragment {
             BeerAccessService.getInstance().GetApiData(context, view, new APICallback() {
                 @Override
                 public void onSuccess(@NonNull List<Beer> value) {
+                    final List<Beer> lstBeers = value;
+                    recyclerView.setAdapter(new BeerRecyclerViewAdapter(lstBeers, R.layout.fragment_beer_list, context));
 
-                    recyclerView.setAdapter(new BeerRecyclerViewAdapter(value, R.layout.fragment_beer_list, context));
 
 
-
-                    /**recyclerView.addOnItemTouchListener(
-                            new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener()  {
-                                @Override public void onItemClick(View view, int position) {
-                                    myClickListener = (BiereClick) getActivity();
-                                    myClickListener.onItemClick(view,position,bieres);
+                    recyclerView.addOnItemTouchListener(
+                            new RecyclerTouchListener(context, recyclerView ,new ClickListener()  {
+                                @Override public void onClick(View view, int index) {
+                                    clickListener = (IBeerClick) getActivity();
+                                    clickListener.onItemClick(view,index,lstBeers);
                                 }
 
 
                             }    )
-                    );**/
+                    );
+
+
 
                 }
 

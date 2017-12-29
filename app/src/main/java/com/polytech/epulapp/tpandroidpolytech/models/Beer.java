@@ -15,18 +15,20 @@ public class Beer {
     public final String name;
     @SerializedName("abv")
     public final String abv;
-
+    @SerializedName("description")
+    public final String description;
     @SerializedName("image_url")
     public final String image_url;
 
     private Bitmap thumbnail;
 
 
-    public Beer(String id, String name, String abv,String url) {
+    public Beer(String id, String name, String abv,String url, String desc) {
         this.id = id;
         this.name = name;
         this.abv=abv;
         this.image_url=url;
+        this.description = desc;
     }
 
     public void setBeerThumbnail(Bitmap img){

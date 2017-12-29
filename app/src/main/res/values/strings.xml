@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TPAndroidPolytech</string>
+    <string name="app_name">BeerFinder</string>
     <string name="action_settings">View2</string>
     <string name="action_back">Back</string>
     <string name="offline">Offline</string>

@@ -17,7 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener , SecondaryFragment.SecondaryFragmentListener {
+import com.polytech.epulapp.tpandroidpolytech.models.Beer;
+import com.polytech.epulapp.tpandroidpolytech.utils.IBeerClick;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements IBeerClick, MainFragment.MainFragmentListener , SecondaryFragment.SecondaryFragmentListener {
 
     public Menu currentMenu;
     public MyBroadcastR receiver;
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         FragmentTransaction ft = getFragmentManager().beginTransaction();
        // MainFragment mf = new MainFragment();
         BeerFragment bf = new BeerFragment();
-        ft.replace(R.id.mainFrame, bf,"view1");
+        ft.replace(R.id.mainFrame, bf,"lstbeer");
         ft.commit();
         }
 
@@ -74,29 +79,17 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     {
 
 
-        MainFragment myFragment = (MainFragment)getFragmentManager().findFragmentByTag("view1");
+        DetailFragment myFragment = (DetailFragment)getFragmentManager().findFragmentByTag("detail");
         if (myFragment != null && myFragment.isVisible()) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            SecondaryFragment sf = new SecondaryFragment();
+            BeerFragment sf = new BeerFragment();
 
-            ft.replace(R.id.mainFrame, sf , "view2");
-            ft.addToBackStack("view2");
+            ft.replace(R.id.mainFrame, sf , "lstbeer");
+            ft.addToBackStack("detail");
             ft.commit();
-            currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_back));
+            currentMenu.findItem(R.id.action_settings).setTitle("");
         }
-        else
-            {
-                SecondaryFragment secFragment = (SecondaryFragment)getFragmentManager().findFragmentByTag("view2");
-                if (secFragment != null && secFragment.isVisible()) {
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    MainFragment sf = new MainFragment();
 
-                    ft.replace(R.id.mainFrame, sf , "view1");
-                    ft.addToBackStack("view1");
-                    ft.commit();
-                    currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_settings));
-                }
-            }
 
     }
 
@@ -160,4 +153,18 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
         ft.commit();
         currentMenu.findItem(R.id.action_settings).setTitle(getString(R.string.action_settings));
     }
+
+    @Override
+    public void onItemClick(View view,int index, List<Beer> lstBeers) {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        DetailFragment df = new DetailFragment();
+        df.setCurrentBeer(lstBeers.get(index));
+        ft.replace(R.id.mainFrame, df,"detail");
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.addToBackStack(null);
+        ft.commit();
+        currentMenu.findItem(R.id.action_settings).setTitle("◀");
+    }
+
+
 }
